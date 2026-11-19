@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+:root {
+    --sidebar-bg: #111827;
+    --sidebar-border: rgba(148, 163, 184, 0.18);
+    --page-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --primary: #4f46e5;
+    --primary-soft: rgba(79, 70, 229, 0.12);
+    --text: #0f172a;
+    --muted: #64748b;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-slate-100 text-slate-900 antialiased;
+    }
+
+    a {
+        @apply transition-colors duration-200;
+    }
+}
+
+@layer utilities {
+    .shadow-soft {
+        box-shadow: var(--shadow-soft);
+    }
+}
+
+@layer components {
+    .dashboard-shell {
+        @apply flex min-h-screen bg-slate-100;
+    }
+
+    .dashboard-sidebar {
+        @apply flex w-full max-w-[260px] flex-col justify-between border-r border-slate-200 bg-[#111827] text-slate-200;
+    }
+
+    .sidebar-header {
+        @apply flex items-center gap-3 border-b border-white/10 px-6 py-5;
+    }
+
+    .brand-mark {
+        @apply flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-500/15 text-indigo-300;
+    }
+
+    .brand-label {
+        @apply text-[10px] font-medium uppercase tracking-[0.28em] text-slate-400;
+    }
+
+    .brand-name {
+        @apply mt-1 text-base font-semibold text-white;
+    }
+
+    .sidebar-nav {
+        @apply space-y-1 px-4 py-5;
+    }
+
+    .nav-item {
+        @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-300 no-underline hover:bg-white/5 hover:text-white;
+    }
+
+    .nav-item.active {
+        @apply bg-indigo-500/15 text-white shadow-inner shadow-indigo-500/20;
+    }
+
+    .nav-item svg,
+    .secondary-action svg,
+    .stat-icon svg,
+    .icon-inline svg {
+        @apply h-4 w-4 shrink-0;
+    }
+
+    .sidebar-footer {
+        @apply border-t border-white/10 p-4;
+    }
+
+    .user-chip {
+        @apply flex items-center gap-3 rounded-2xl bg-white/5 p-3;
+    }
+
+    .user-avatar {
+        @apply flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/20 text-sm font-semibold text-indigo-200;
+    }
+
+    .user-name {
+        @apply text-sm font-medium text-white;
+    }
+
+    .user-role {
+        @apply text-xs text-slate-400;
+    }
+
+    .secondary-action {
+        @apply flex items-center gap-2 rounded-xl border border-white/10 px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-white;
+    }
+
+    .dashboard-main {
+        @apply flex min-h-screen w-full flex-1 flex-col;
+    }
+
+    .dashboard-header {
+        @apply border-b border-slate-200 bg-white/80 px-6 py-5 backdrop-blur-sm md:px-8;
+    }
+
+    .dashboard-content {
+        @apply flex-1 px-4 py-6 md:px-8;
+    }
+
+    .panel {
+        @apply rounded-3xl border border-slate-200 bg-white shadow-[var(--shadow-soft)];
+    }
+
+    .stat-card {
+        @apply p-4;
+    }
+
+    .stat-icon {
+        @apply flex h-11 w-11 items-center justify-center rounded-2xl;
+    }
+
+    .stat-card-indigo .stat-icon {
+        @apply bg-indigo-100 text-indigo-600;
+    }
+
+    .stat-card-emerald .stat-icon {
+        @apply bg-emerald-100 text-emerald-600;
+    }
+
+    .stat-card-amber .stat-icon {
+        @apply bg-amber-100 text-amber-600;
+    }
+
+    .stat-card-sky .stat-icon {
+        @apply bg-sky-100 text-sky-600;
+    }
+
+    .stat-card-rose .stat-icon {
+        @apply bg-rose-100 text-rose-600;
+    }
+
+    .status-badge {
+        @apply inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em];
+    }
+
+    .status-badge.active,
+    .status-badge.occupied {
+        @apply bg-emerald-100 text-emerald-700;
+    }
+
+    .status-badge.vacant,
+    .status-badge.pending {
+        @apply bg-amber-100 text-amber-700;
+    }
+
+    .status-badge.expired,
+    .status-badge.overdue {
+        @apply bg-rose-100 text-rose-700;
+    }
+
+    .status-badge.partial {
+        @apply bg-sky-100 text-sky-700;
+    }
+
+    .page-heading {
+        @apply mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between;
+    }
+
+    .page-title {
+        @apply text-2xl font-semibold text-slate-900;
+    }
+
+    .page-subtitle {
+        @apply text-sm text-slate-500;
+    }
+
+    .action-button {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500;
+    }
+
+    .ghost-button {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-shell {
+        @apply flex-col;
+    }
+
+    .dashboard-sidebar {
+        @apply max-w-none border-r-0 border-b border-slate-200;
+    }
+
+    .sidebar-nav {
+        @apply grid grid-cols-2 gap-2 md:grid-cols-3;
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard-header,
+    .dashboard-content {
+        @apply px-4;
+    }
+
+    .sidebar-nav {
+        @apply grid-cols-1;
+    }
+}

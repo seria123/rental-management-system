@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class PropertyOwner extends Model
+{
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+        'address',
+        'status',
+    ];
+
+    public function properties(): HasMany
+    {
+        return $this->hasMany(Property::class);
+    }
+}
